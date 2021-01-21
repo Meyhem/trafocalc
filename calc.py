@@ -101,6 +101,7 @@ effective_permeability = relative_permeability
 turns_primary = voltage_primary / (4 * max_magnetic_flux * frequency)
 inductance_primary = turns_primary * turns_primary * inductance_coefficient / 1000000000
 impedance_primary = 2 * math.pi * frequency * inductance_primary
+magnetizing_current = voltage_primary / impedance_primary
 
 turns_secondary = voltage_secondary / voltage_primary * turns_primary
 inductance_secondary = turns_secondary * turns_secondary * inductance_coefficient / 1000000000
@@ -119,6 +120,7 @@ print('|---Primary winding')
 print(f'| Turns \tNp = {round(turns_primary, 2)}')
 print(f'| Primary inductance \tLp = {inductance_primary * 1000000:.3f} [μH]')
 print(f'| Primary impedance \tZp = {impedance_primary:.3f} [Ω]')
+print(f'| Magnetizing current \tIm = {magnetizing_current:.3f} [A]')
 print(f'| Primary winding wire length = {round(loop_length * 1000 * turns_primary, 2)} [mm]')
 
 print('|---Secondary winding')
